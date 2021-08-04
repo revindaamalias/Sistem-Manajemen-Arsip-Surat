@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2021 at 09:58 AM
+-- Generation Time: Aug 04, 2021 at 04:07 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -91,7 +91,7 @@ CREATE TABLE `tbl_sett` (
 --
 
 INSERT INTO `tbl_sett` (`id_sett`, `surat_masuk`, `surat_keluar`, `id_user`) VALUES
-(1, 5, 5, 1);
+(1, 5, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -117,11 +117,11 @@ CREATE TABLE `tbl_surat_keluar` (
 --
 
 INSERT INTO `tbl_surat_keluar` (`id_surat`, `no_agenda`, `tujuan`, `no_surat`, `isi`, `tgl_surat`, `tgl_catat`, `file`, `keterangan`, `id_user`) VALUES
-(6, 6, 'PPPKM Paguyuban Pedagang Pasar', '004/SPM/PPPKM/VII/2021', 'Tembusan Permohonan Pembebasan Retrebusi', '2021-07-19', '2021-07-22', 'Tembusan Permohonan.jpeg', 'Tembusan Permohonan Retribusi', 1),
-(7, 7, 'DPUPR', '0', 'Ucapan undur diri berakhirnya masa bakti sebagai ASN dari Kepala Dinas PUPR Bapak Hadi Santoso', '2021-06-30', '2021-06-30', 'Ucapan undur diri.jpeg', 'Ucapan undur diri', 1),
-(8, 8, 'Dispendukcapil Kota Malang', '470/2057/35.73.409/2021', 'Laporan Penganan Aplikasi Online SiAPEL', '2021-06-14', '2021-08-21', 'SiAPEL.jpeg', 'SiAPEL', 1),
-(9, 9, 'Kelurahan Bareng Kec. Klojen', '800/169/3573.02.1009/2021', 'Tembusan Laporan Bencana', '2021-06-22', '2021-06-23', 'Tembusan Laporan.jpeg', 'Tembusan Laporan', 1),
-(10, 10, 'BKPSDM Kota Malang', '', 'Pemberitahuan Proses Layanan Pensiunan PNS', '2021-07-09', '2021-07-23', 'Pemberitahuan.jpeg', 'Pemberitahuan', 1);
+(6, 6, 'PPPKM Paguyuban Pedagang Pasar', '004/SPM/PPPKM/VII/2021', 'Tembusan Permohonan Pembebasan Retrebusi', '2021-07-19', '2021-07-22', 'Tembusan Permohonan.docx', 'Tembusan Permohonan Retribusi', 1),
+(7, 7, 'DPUPR', '0', 'Ucapan undur diri berakhirnya masa bakti sebagai ASN dari Kepala Dinas PUPR Bapak Hadi Santoso', '2021-06-30', '2021-06-30', 'Ucapan undur diri.docx', 'Ucapan undur diri', 1),
+(8, 8, 'Dispendukcapil Kota Malang', '470/2057/35.73.409/2021', 'Laporan Penganan Aplikasi Online SiAPEL', '2021-06-14', '2021-08-21', 'SiAPEL.docx', 'SiAPEL', 1),
+(9, 9, 'Kelurahan Bareng Kec. Klojen', '800/169/3573.02.1009/2021', 'Tembusan Laporan Bencana', '2021-06-22', '2021-06-23', 'Tembusan Laporan.docx', 'Tembusan Laporan', 1),
+(10, 10, 'BKPSDM Kota Malang', '', 'Pemberitahuan Proses Layanan Pensiunan PNS', '2021-07-09', '2021-07-23', 'Pemberitahuan.docx', 'Pemberitahuan', 1);
 
 -- --------------------------------------------------------
 
@@ -139,6 +139,7 @@ CREATE TABLE `tbl_surat_masuk` (
   `tgl_diterima` date NOT NULL,
   `file` varchar(250) NOT NULL,
   `keterangan` varchar(250) NOT NULL,
+  `diteruskan_kpd` varchar(100) NOT NULL,
   `id_user` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -146,12 +147,12 @@ CREATE TABLE `tbl_surat_masuk` (
 -- Dumping data for table `tbl_surat_masuk`
 --
 
-INSERT INTO `tbl_surat_masuk` (`id_surat`, `no_agenda`, `no_surat`, `asal_surat`, `isi`, `tgl_surat`, `tgl_diterima`, `file`, `keterangan`, `id_user`) VALUES
-(1, 1, '900/1555/35.73.503/2021', 'Badan Keuangan dan Aset Daerah Kota Malang', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021', '2021-07-21', '2021-07-21', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021.jpeg', 'Pemberitahuan', 1),
-(2, 2, '005/1330/35.73.502.2021', 'Pemkot Malang', 'Undangan MUSKOT korpri Kota Malang Rabu 30 Juni 2021 Pukul 12.30 di Ruang Sidang Balaikota Malang Pakaian Korpri Lengkap', '2021-06-28', '2021-06-29', 'Undangan MUSKOT korpri.jpeg', 'Undangan MUSKOT', 1),
-(3, 3, '137/PW-C/Inst./IX/1442', 'Yayasan Perjuangan Wahidiyah dan Pondok Pesantren Kedunglo', 'Pengantar Tembusan Surat Intruksi', '2021-07-07', '2021-07-21', 'Pengantar Tembusan Surat Intruksi.jpeg', 'Surat Intruksi', 1),
-(4, 4, '060/1693/MLG/ALS.KRD/SRT', 'Bank Jatim', 'Undangan gathering pra pensiun dan take over kredit multiguna kepada Teresa Titik Andani pada :\r\nKamis, 08 Juli 2021\r\nPukul 09.00\r\nAula Bank Jatim di JA Suprapto No. 26-28 Malang', '2021-06-24', '2021-06-30', 'Undangan gathering pra pensiun.jpeg', 'Undangan gathering pra pensiun', 1),
-(5, 5, '900/2698/35.73.503/2021', 'BKAD Kota Malang', 'Laporan Realisasi Semester Pertama dan Prognosis Enam Bulan Berikutnya Tahun Anggaran 2021', '2021-07-06', '2021-07-23', 'Laporan Realisasi Semester.jpeg', 'Laporan Realisasi Semester', 1);
+INSERT INTO `tbl_surat_masuk` (`id_surat`, `no_agenda`, `no_surat`, `asal_surat`, `isi`, `tgl_surat`, `tgl_diterima`, `file`, `keterangan`, `diteruskan_kpd`, `id_user`) VALUES
+(1, 1, '900/1555/35.73.503/2021', 'Badan Keuangan dan Aset Daerah Kota Malang', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021', '2021-07-21', '2021-07-21', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021.docx', 'Pemberitahuan', 'Yth. Ketua DPRD Kota Malang', 1),
+(2, 2, '005/1330/35.73.502.2021', 'Pemkot Malang', 'Undangan MUSKOT korpri Kota Malang Rabu 30 Juni 2021 Pukul 12.30 di Ruang Sidang Balaikota Malang Pakaian Korpri Lengkap', '2021-06-28', '2021-06-29', 'Undangan MUSKOT korpri.docx', 'Undangan MUSKOT', 'Yth. Set DPRD Kota Malang', 1),
+(3, 3, '137/PW-C/Inst./IX/1442', 'Yayasan Perjuangan Wahidiyah dan Pondok Pesantren Kedunglo', 'Pengantar Tembusan Surat Intruksi', '2021-07-07', '2021-07-21', 'Pengantar Tembusan Surat Intruksi.docx', 'Surat Intruksi', 'Yth. Ketua DPRD Kota Malang', 1),
+(4, 4, '060/1693/MLG/ALS.KRD/SRT', 'Bank Jatim', 'Undangan gathering pra pensiun dan take over kredit multiguna kepada Teresa Titik Andani pada :\r\nKamis, 08 Juli 2021\r\nPukul 09.00\r\nAula Bank Jatim di JA Suprapto No. 26-28 Malang', '2021-06-24', '2021-06-30', 'Undangan gathering pra pensiun.docx', 'Undangan gathering pra pensiun', 'Yth. Sekretaris DPRD Kota Malang', 1),
+(5, 5, '900/2698/35.73.503/2021', 'BKAD Kota Malang', 'Laporan Realisasi Semester Pertama dan Prognosis Enam Bulan Berikutnya Tahun Anggaran 2021', '2021-07-06', '2021-07-23', 'Laporan Realisasi Semester.docx', 'Laporan Realisasi Semester', 'Yth. Ketua DPRD Kota Malang', 1);
 
 -- --------------------------------------------------------
 

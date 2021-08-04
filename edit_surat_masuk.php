@@ -8,9 +8,8 @@
 
         if(isset($_REQUEST['submit'])){
 
-            //validasi form kosong
-            if($_REQUEST['no_agenda'] == "" || $_REQUEST['no_surat'] == "" || $_REQUEST['asal_surat'] == "" || $_REQUEST['isi'] == ""
-                || $_REQUEST['tgl_surat'] == ""  || $_REQUEST['keterangan'] == ""){
+             if($_REQUEST['no_agenda'] == "" || $_REQUEST['no_surat'] == "" || $_REQUEST['asal_surat'] == "" || $_REQUEST['isi'] == ""
+                || $_REQUEST['tgl_surat'] == ""  || $_REQUEST['keterangan'] == "" || $_REQUEST['diteruskan_kpd'] == "" || $_REQUEST['diteruskan_kpd'] == "" ){
                 $_SESSION['errEmpty'] = 'ERROR! Semua form wajib diisi';
                 echo '<script language="javascript">window.history.back();</script>';
             } else {
@@ -21,6 +20,7 @@
                 $isi = $_REQUEST['isi'];
                 $tgl_surat = $_REQUEST['tgl_surat'];
                 $keterangan = $_REQUEST['keterangan'];
+                $diteruskan_kpd = $_REQUEST['diteruskan_kpd'];
                 $id_user = $_SESSION['id_user'];
 
                 //validasi input data
@@ -42,8 +42,14 @@
                             if(!preg_match("/^[a-zA-Z0-9.,_()%&@\/\r\n -]*$/", $isi)){
                                 $_SESSION['eisi'] = 'Form Isi Ringkas hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), kurung(), underscore(_), dan(&) persen(%) dan at(@)';
                                 echo '<script language="javascript">window.history.back();</script>';
+                            }else {
+                        
+                                if(!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $diteruskan_kpd)){
+                                    $_SESSION['diteruskan_kpd'] = 'Form Diteruskan Kepada hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
+                                    echo '<script language="javascript">window.history.back();</script>';
+                                } else {
                             
-    } else {
+    }
 
 if(!preg_match("/^[0-9.-]*$/", $tgl_surat)){
     $_SESSION['etgl_surat'] = 'Form Tanggal Surat hanya boleh mengandung angka dan minus(-)';
@@ -101,7 +107,7 @@ echo '<script language="javascript">window.history.back();</script>';
 //jika file kosong akan mengeksekusi script dibawah ini
 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$nfile);
 
-$query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',tgl_surat='$tgl_surat',file='$nfile',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
+$query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',tgl_surat='$tgl_surat',file='$nfile',keterangan='$keterangan',id_user='$id_user',diteruskan_kpd='$diteruskan_kpd WHERE id_surat='$id_surat'");
 
 if($query == true){
 $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
@@ -125,7 +131,7 @@ echo '<script language="javascript">window.history.back();</script>';
 //jika form file kosong akan mengeksekusi script dibawah ini
 $id_surat = $_REQUEST['id_surat'];
 
-$query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',tgl_surat='$tgl_surat',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
+$query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',tgl_surat='$tgl_surat',keterangan='$keterangan', diteruskan_kpd='$diteruskan_kpd',id_user='$id_user' WHERE id_surat='$id_surat'");
 
 if($query == true){
 $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
@@ -147,8 +153,8 @@ echo '<script language="javascript">window.history.back();</script>';
     }  {
 
         $id_surat = mysqli_real_escape_string($config, $_REQUEST['id_surat']);
-        $query = mysqli_query($config, "SELECT id_surat, no_agenda, no_surat, asal_surat, isi, tgl_surat, file, keterangan, id_user FROM tbl_surat_masuk WHERE id_surat='$id_surat'");
-        list($id_surat, $no_agenda, $no_surat, $asal_surat, $isi, $tgl_surat, $file, $keterangan, $id_user) = mysqli_fetch_array($query);
+        $query = mysqli_query($config, "SELECT id_surat, no_agenda, no_surat, asal_surat, isi, tgl_surat, file, keterangan, diteruskan_kpd, id_user FROM tbl_surat_masuk WHERE id_surat='$id_surat'");
+        list($id_surat, $no_agenda, $no_surat, $asal_surat, $isi, $tgl_surat, $file, $keterangan, $diteruskan_kpd, $id_user) = mysqli_fetch_array($query);
 
         if($_SESSION['id_user'] != $id_user AND $_SESSION['id_user'] != 1){
             echo '<script language="javascript">
@@ -284,6 +290,18 @@ echo '<script language="javascript">window.history.back();</script>';
                                     }
                                 ?>
                             <label for="keterangan">Keterangan</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix md-prefix">featured_play_list</i>
+                            <input id="diteruskan_kpd" type="text" class="validate" name="diteruskan_kpd" value="<?php echo $diteruskan_kpd ;?>" required>
+                                <?php
+                                    if(isset($_SESSION['diteruskan_kpd'])){
+                                        $diteruskan_kpd = $_SESSION['diteruskan_kpd'];
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$diteruskan_kpd.'</div>';
+                                        unset($_SESSION['diteruskan_kpd']);
+                                    }
+                                ?>
+                            <label for="diteruskan_kpd">Diteruskan Kepada</label>
                         </div>
                         <div class="input-field col s6">
                             <div class="file-field input-field">

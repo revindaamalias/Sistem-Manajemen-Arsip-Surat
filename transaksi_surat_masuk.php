@@ -148,6 +148,7 @@
                                     <th width="10%">No. Agenda</th>
                                     <th width="30%">Isi Ringkas<br/> File</th>
                                     <th width="24%">Asal Surat</th>
+                                    <th width="24%">Diteruskan Kepada</th>
                                     <th width="18%">No. Surat<br/>Tgl Surat</th>
                                     <th width="18%">Tindakan <span class="right"><i class="material-icons" style="color: #333;">settings</i></span></th>
                                 </tr>
@@ -170,6 +171,7 @@
                                         echo '<em>Tidak ada file yang di upload</em>';
                                     } echo '</td>
                                     <td>'.$row['asal_surat'].'</td>
+                                    <td>'.$row['diteruskan_kpd'].'</td>
                                     <td>'.$row['no_surat'].'<br/><hr/>'.indoDate($row['tgl_surat']).'</td>
                                     <td>';
 
@@ -207,6 +209,7 @@
                                         <th width="10%">No. Agenda</th>
                                         <th width="30%">Isi Ringkas<br/> File</th>
                                         <th width="24%">Asal Surat</th>
+                                        <th width="24%">Diteruskan Kepada</th>
                                         <th width="18%">No. Surat<br/>Tgl Surat</th>
                                         <th width="18%">Tindakan <span class="right tooltipped" data-position="left" data-tooltip="Atur jumlah data yang ditampilkan"><a class="modal-trigger" href="#modal"><i class="material-icons" style="color: #333;">settings</i></a></span></th>
 
@@ -272,6 +275,7 @@
                                             echo '<em>Tidak ada file yang di upload</em>';
                                         } echo '</td>
                                         <td>'.$row['asal_surat'].'</td>
+                                        <td>'.$row['diteruskan_kpd'].'</td>
                                         <td>'.$row['no_surat'].'<br/><hr/>'.indoDate($row['tgl_surat']).'</td>
                                         <td>';
 

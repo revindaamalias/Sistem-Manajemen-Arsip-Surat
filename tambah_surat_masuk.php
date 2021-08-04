@@ -11,7 +11,7 @@
 
             //validasi form kosong
             if($_REQUEST['no_agenda'] == "" || $_REQUEST['no_surat'] == "" || $_REQUEST['asal_surat'] == "" || $_REQUEST['isi'] == ""
-                || $_REQUEST['tgl_surat'] == ""  || $_REQUEST['keterangan'] == ""){
+                || $_REQUEST['tgl_surat'] == ""  || $_REQUEST['keterangan'] == "" || $_REQUEST['diteruskan_kpd'] == "" ){
                 $_SESSION['errEmpty'] = 'ERROR! Semua form wajib diisi';
                 echo '<script language="javascript">window.history.back();</script>';
             } else {
@@ -22,6 +22,7 @@
                 $isi = $_REQUEST['isi'];
                 $tgl_surat = $_REQUEST['tgl_surat'];
                 $keterangan = $_REQUEST['keterangan'];
+                $diteruskan_kpd = $_REQUEST['diteruskan_kpd'];
                 $id_user = $_SESSION['id_user'];
 
                 //validasi input data
@@ -54,6 +55,12 @@
                     $_SESSION['keterangan'] = 'Form Keterangan hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
                     echo '<script language="javascript">window.history.back();</script>';
                 } else {
+                    
+                if(!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $diteruskan_kpd)){
+                    $_SESSION['diteruskan_kpd'] = 'Form Diteruskan Kepada hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
+                    echo '<script language="javascript">window.history.back();</script>';
+                } else {
+            }
 
 $cek = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE no_surat='$no_surat'");
 $result = mysqli_num_rows($cek);
@@ -87,8 +94,8 @@ if(in_array($eks, $ekstensi) == true){
     move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$nfile);
 
     $query = mysqli_query($config, "INSERT INTO tbl_surat_masuk(no_agenda,no_surat,asal_surat,isi,tgl_surat,
-        tgl_diterima,file,keterangan,id_user)
-    VALUES('$no_agenda','$no_surat','$asal_surat','$isi','$tgl_surat',NOW(),'$nfile','$keterangan','$id_user')");
+        tgl_diterima,file,keterangan,diteruskan_kpd,id_user)
+    VALUES('$no_agenda','$no_surat','$asal_surat','$isi','$tgl_surat',NOW(),'$nfile','$keterangan','$diteruskan_kpd','$id_user')");
 
     if($query == true){
     $_SESSION['succAdd'] = 'SUKSES! Data berhasil ditambahkan';
@@ -109,8 +116,8 @@ if(in_array($eks, $ekstensi) == true){
     } else {
 
 //jika form file kosong akan mengeksekusi script dibawah ini
-$query = mysqli_query($config, "INSERT INTO tbl_surat_masuk(no_agenda,no_surat,asal_surat,isi,tgl_surat, tgl_diterima,file,keterangan,id_user)
-VALUES('$no_agenda','$no_surat','$asal_surat','$isi','$tgl_surat',NOW(),'','$keterangan','$id_user')");
+$query = mysqli_query($config, "INSERT INTO tbl_surat_masuk(no_agenda,no_surat,asal_surat,isi,tgl_surat, tgl_diterima,file,keterangan,diteruskan_kpd,id_user)
+VALUES('$no_agenda','$no_surat','$asal_surat','$isi','$tgl_surat',NOW(),'','$keterangan','$diteruskan_kpd','$id_user')");
 
 if($query == true){
     $_SESSION['succAdd'] = 'SUKSES! Data berhasil ditambahkan';
@@ -280,6 +287,18 @@ if($query == true){
                                     }
                                 ?>
                             <label for="keterangan">Keterangan</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix md-prefix">featured_play_list</i>
+                            <input id="diteruskan_kpd" type="text" class="validate" name="diteruskan_kpd" required>
+                                <?php
+                                    if(isset($_SESSION['diteruskan_kpd'])){
+                                        $diteruskan_kpd = $_SESSION['diteruskan_kpd'];
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$diteruskan_kpd.'</div>';
+                                        unset($_SESSION['diteruskan_kpd']);
+                                    }
+                                ?>
+                            <label for="diteruskan_kpd">Diteruskan Kepada</label>
                         </div>
                         <div class="input-field col s6">
                             <div class="file-field input-field">

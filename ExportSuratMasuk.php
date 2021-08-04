@@ -13,6 +13,7 @@ include 'include/config.php';
         <th>Tanggal Catat</th>
         <th>File</th>
         <th>Keterangan</th>
+        <th>Diteruskan Kepada</th>
         <th>ID User</th>
     </tr>
     <?php
@@ -30,6 +31,7 @@ include 'include/config.php';
         <td><?php echo $d['tgl_diterima']; ?></td>
         <td><?php echo $d['file']; ?></td>
         <td><?php echo $d['keterangan']; ?></td>
+        <td><?php echo $d['diteruskan_kpd']; ?></td>
         <td><?php echo $d['id_user']; ?></td>
     </tr>
     <?php endwhile; ?>
