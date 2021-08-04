@@ -60,6 +60,11 @@
                                             <li class="waves-effect waves-light">
                                                 <a href="?page=tsm&act=add"><i class="material-icons md-24">add_circle</i> Tambah Data</a>
                                             </li>
+                                            <a href="export-xls-masuk.php"><button type="button" class="btn btn-light">Export to Excel</button></a>
+                                            <hr />
+                                            <?php
+                                                include 'ExportSuratMasuk.php';
+                                            ?>
                                         </ul>
                                     </div>
                                     <div class="col m5 hide-on-med-and-down">
