@@ -34,20 +34,20 @@
                         echo '<script language="javascript">window.history.back();</script>';
                     } else {
 
-                        if(!preg_match("/^[a-zA-Z0-9.,() \/ -]*$/", $asal_surat)){
-                            $_SESSION['easal_surat'] = 'Form Asal Surat hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-),kurung() dan garis miring(/)';
-                            echo '<script language="javascript">window.history.back();</script>';
-                        } else {
+                    if(!preg_match("/^[a-zA-Z0-9.,() \/ -]*$/", $asal_surat)){
+                        $_SESSION['easal_surat'] = 'Form Asal Surat hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-),kurung() dan garis miring(/)';
+                        echo '<script language="javascript">window.history.back();</script>';
+                    } else {
 
-                            if(!preg_match("/^[a-zA-Z0-9.,_()%&@\/\r\n -]*$/", $isi)){
-                                $_SESSION['eisi'] = 'Form Isi Ringkas hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), kurung(), underscore(_), dan(&) persen(%) dan at(@)';
-                                echo '<script language="javascript">window.history.back();</script>';
-                            }else {
+                    if(!preg_match("/^[a-zA-Z0-9.,_()%&@\/\r\n -]*$/", $isi)){
+                        $_SESSION['eisi'] = 'Form Isi Ringkas hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), kurung(), underscore(_), dan(&) persen(%) dan at(@)';
+                        echo '<script language="javascript">window.history.back();</script>';
+                    }else {
                         
-                                if(!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $diteruskan_kpd)){
-                                    $_SESSION['diteruskan_kpd'] = 'Form Diteruskan Kepada hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
-                                    echo '<script language="javascript">window.history.back();</script>';
-                                } else {
+                    if(!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $diteruskan_kpd)){
+                        $_SESSION['diteruskan_kpd'] = 'Form Diteruskan Kepada hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
+                        echo '<script language="javascript">window.history.back();</script>';
+                    } else {
                             
     }
 
