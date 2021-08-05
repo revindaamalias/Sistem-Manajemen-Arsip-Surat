@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2021 at 09:00 AM
+-- Generation Time: Aug 05, 2021 at 02:33 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -42,7 +42,8 @@ CREATE TABLE `tbl_disposisi` (
 --
 
 INSERT INTO `tbl_disposisi` (`id_disposisi`, `tujuan`, `isi_disposisi`, `batas_waktu`, `catatan`, `id_surat`, `id_user`) VALUES
-(3, 'Badan Keuangan dan Aset Daerah Kota Malang', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021', '2021-07-21', 'Yth. Ketua DPRD Kota Malang', 1, 1);
+(3, 'Yth. Ketua DPRD Kota Malang', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021', '2021-07-21', 'Badan Keuangan dan Aset Daerah Kota Malang', 1, 1),
+(7, 'Yth. Ketua DPRD Kota Malang', 'Struktur Organisasi Terbaru 2021', '2021-08-05', '-', 10, 4);
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ CREATE TABLE `tbl_instansi` (
 --
 
 INSERT INTO `tbl_instansi` (`id_instansi`, `institusi`, `nama`, `status`, `alamat`, `kepala`, `nip`, `website`, `email`, `logo`, `id_user`) VALUES
-(1, 'Ketua DPRD Kota Malang', 'DPRD Kota Malang', 'Aktif', 'Jl. Tugu Nomor 1A', 'Drs. Mulyono, MSi', '196304181987031011', 'https://dprd.malangkota.go.id/', 'setwan@malangkota.go.id', 'logo2.png', 1);
+(1, 'Sekretariat Dewan Perwakilan Rakyat Daerah Kota Malang', 'Ketua DPRD Kota Malang', 'Aktif', 'Jl. Tugu Nomor 1A', 'Drs. Mulyono, MSi', '19650627 198602 1 004', 'https://dprd.malangkota.go.id/', 'setwan@malangkota.go.id', 'logo2.png', 1);
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,8 @@ INSERT INTO `tbl_surat_masuk` (`id_surat`, `no_agenda`, `no_surat`, `asal_surat`
 (2, 2, '005/1330/35.73.502.2021', 'Pemkot Malang', 'Undangan MUSKOT korpri Kota Malang Rabu 30 Juni 2021 Pukul 12.30 di Ruang Sidang Balaikota Malang Pakaian Korpri Lengkap', '2021-06-28', '2021-06-29', 'Undangan MUSKOT korpri.docx', 'Undangan MUSKOT', 'Yth. Set DPRD Kota Malang', 1),
 (3, 3, '137/PW-C/Inst./IX/1442', 'Yayasan Perjuangan Wahidiyah dan Pondok Pesantren Kedunglo', 'Pengantar Tembusan Surat Intruksi', '2021-07-07', '2021-07-21', 'Pengantar Tembusan Surat Intruksi.docx', 'Surat Intruksi', 'Yth. Ketua DPRD Kota Malang', 1),
 (4, 4, '060/1693/MLG/ALS.KRD/SRT', 'Bank Jatim', 'Undangan gathering pra pensiun dan take over kredit multiguna kepada Teresa Titik Andani pada :\r\nKamis, 08 Juli 2021\r\nPukul 09.00\r\nAula Bank Jatim di JA Suprapto No. 26-28 Malang', '2021-06-24', '2021-06-30', 'Undangan gathering pra pensiun.docx', 'Undangan gathering pra pensiun', 'Yth. Sekretaris DPRD Kota Malang', 1),
-(5, 5, '900/2698/35.73.503/2021', 'BKAD Kota Malang', 'Laporan Realisasi Semester Pertama dan Prognosis Enam Bulan Berikutnya Tahun Anggaran 2021', '2021-07-06', '2021-07-23', 'Laporan Realisasi Semester.docx', 'Laporan Realisasi Semester', 'Yth. Ketua DPRD Kota Malang', 1);
+(5, 5, '900/2698/35.73.503/2021', 'BKAD Kota Malang', 'Laporan Realisasi Semester Pertama dan Prognosis Enam Bulan Berikutnya Tahun Anggaran 2021', '2021-07-06', '2021-07-23', 'Laporan Realisasi Semester.docx', 'Laporan Realisasi Semester', 'Yth. Ketua DPRD Kota Malang', 1),
+(10, 6, '08123456789', 'Pemkot Malang', 'Data Struktur Organisasi', '2021-08-05', '2021-08-05', '3792-STRUKTUR ORGANISASI 2021.docx', 'Data Struktur Organisasi Terbaru 2021', 'Yth. DPRD Kota Malang', 4);
 
 -- --------------------------------------------------------
 
@@ -253,7 +255,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_disposisi`
 --
 ALTER TABLE `tbl_disposisi`
-  MODIFY `id_disposisi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_disposisi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_diteruskan_kpd`
@@ -271,7 +273,7 @@ ALTER TABLE `tbl_surat_keluar`
 -- AUTO_INCREMENT for table `tbl_surat_masuk`
 --
 ALTER TABLE `tbl_surat_masuk`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

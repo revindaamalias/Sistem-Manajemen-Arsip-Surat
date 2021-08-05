@@ -139,7 +139,7 @@
                 }
                 .up {
                     font-size: 17px!important;
-                    font-weight: normal;
+                    font-weight: bold;
                 }
                 .status {
                     font-size: 17px!important;
@@ -167,13 +167,11 @@
         <!-- Container START -->
             <div id="colres">
                 <div class="disp">';
-                    $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
-                    list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
+                    $query2 = mysqli_query($config, "SELECT institusi, alamat, logo FROM tbl_instansi");
+                    list($institusi, $alamat, $logo) = mysqli_fetch_array($query2);
                         echo '<img class="logodisp" src="./upload/'.$logo.'"/>';
-                        echo '<h6 class="up">'.$institusi.'</h6>';
-                        echo '<h5 class="up" id="nama">'.$nama.'</h5><br/>';
-                        echo '<h6 class="status">'.$status.'</h6>';
-                        echo '<span id="alamat">Jl. Raya Tajur Kp. Buntar Kel. Muarasari Kec. Bogor Selatan 16137</span>';
+                        echo '<h5 class="up">'.$institusi.'</h5>';
+                        echo '<span id="alamat">Jalan Tugu No. 1A, Kota Malang</span>';
 
                     echo '
                 </div>
@@ -242,12 +240,12 @@
                 </tbody>
             </table>
             <div id="lead">
-                <p>Kepala kepsek</p>
+                <p>Ketua DPRD Kota Malang</p>
                 <div style="height: 50px;"></div>';
-                $query = mysqli_query($config, "SELECT kepsek, nip FROM tbl_instansi");
-                list($kepsek,$nip) = mysqli_fetch_array($query);
-                if(!empty($kepsek)){
-                    echo '<p class="lead">'.$kepsek.'</p>';
+                $query = mysqli_query($config, "SELECT kepala, nip FROM tbl_instansi");
+                list($kepala,$nip) = mysqli_fetch_array($query);
+                if(!empty($kepala)){
+                    echo '<p class="lead">'.$kepala.'</p>';
                 } else {
                     echo '<p class="lead">Drs. Joni Alwis</p>';
                 }

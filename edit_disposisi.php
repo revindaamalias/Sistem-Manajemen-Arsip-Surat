@@ -173,7 +173,7 @@ echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-
     unset($_SESSION['catatan']);
                                         }
                                     ?>
-<label for="catatan">Catatan</label>
+<label for="catatan">catatan</label>
 </div>
 
                         </div>
