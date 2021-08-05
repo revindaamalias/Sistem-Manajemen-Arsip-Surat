@@ -266,7 +266,7 @@ if($ukuran < 2000000){
                                     </div>
                                     <div class="input-field col s6">
                                         <i class="material-icons prefix md-prefix">account_box</i>
-                                        <input id="kepsek" type="text" class="validate" name="kepsek" value="<?php echo $row['kepsek']; ?>" required>
+                                        <input id="kepala" type="text" class="validate" name="kepsek" value="<?php echo $row['kepsek']; ?>" required>
                                             <?php
                                                 if(isset($_SESSION['kepsek'])){
                                                     $kepsek = $_SESSION['kepsek'];

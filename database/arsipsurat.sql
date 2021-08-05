@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2021 at 04:07 AM
+-- Generation Time: Aug 05, 2021 at 09:00 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -42,9 +42,30 @@ CREATE TABLE `tbl_disposisi` (
 --
 
 INSERT INTO `tbl_disposisi` (`id_disposisi`, `tujuan`, `isi_disposisi`, `batas_waktu`, `catatan`, `id_surat`, `id_user`) VALUES
-(1, 'PPPKM Paguyuban Pedagang Pasar', 'Tembusan Permohonan Pembebasan Retribusi', '2021-07-19', 'Yth. Ketua DPRD Kota Malang', 6, 1),
-(2, 'DPUPR', 'Ucapan undur diri berakhirnya masa bakti sebagai ASN dari Kepala Dinas PUPR Bapak Hadi Santoso', '2021-06-30', 'Yth. Sekretaris DPRD Kota Malang', 7, 1),
 (3, 'Badan Keuangan dan Aset Daerah Kota Malang', 'Pemberitahuan Pengeluaran Belanja Tidak Terduga Tahun Anggaran 2021', '2021-07-21', 'Yth. Ketua DPRD Kota Malang', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_diteruskan_kpd`
+--
+
+CREATE TABLE `tbl_diteruskan_kpd` (
+  `id` int(11) NOT NULL,
+  `nama_kpd` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_diteruskan_kpd`
+--
+
+INSERT INTO `tbl_diteruskan_kpd` (`id`, `nama_kpd`) VALUES
+(1, 'Yth. Ketua DPRD Kota Malang'),
+(2, 'Yth. Sekretaris DPRD Kota Malang'),
+(3, 'Yth. Ketua Komisi A DPRD Kota Malang'),
+(4, 'Yth. Ketua Komisi B DPRD Kota Malang'),
+(5, 'Yth. Ketua Komisi C DPRD Kota Malang'),
+(6, 'Yth. Ketua Komisi D DPRD Kota Malang');
 
 -- --------------------------------------------------------
 
@@ -58,7 +79,7 @@ CREATE TABLE `tbl_instansi` (
   `nama` varchar(150) NOT NULL,
   `status` varchar(150) NOT NULL,
   `alamat` varchar(150) NOT NULL,
-  `kepsek` varchar(50) NOT NULL,
+  `kepala` varchar(50) NOT NULL,
   `nip` varchar(25) NOT NULL,
   `website` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -70,7 +91,7 @@ CREATE TABLE `tbl_instansi` (
 -- Dumping data for table `tbl_instansi`
 --
 
-INSERT INTO `tbl_instansi` (`id_instansi`, `institusi`, `nama`, `status`, `alamat`, `kepsek`, `nip`, `website`, `email`, `logo`, `id_user`) VALUES
+INSERT INTO `tbl_instansi` (`id_instansi`, `institusi`, `nama`, `status`, `alamat`, `kepala`, `nip`, `website`, `email`, `logo`, `id_user`) VALUES
 (1, 'Ketua DPRD Kota Malang', 'DPRD Kota Malang', 'Aktif', 'Jl. Tugu Nomor 1A', 'Drs. Mulyono, MSi', '196304181987031011', 'https://dprd.malangkota.go.id/', 'setwan@malangkota.go.id', 'logo2.png', 1);
 
 -- --------------------------------------------------------
@@ -189,6 +210,12 @@ ALTER TABLE `tbl_disposisi`
   ADD PRIMARY KEY (`id_disposisi`);
 
 --
+-- Indexes for table `tbl_diteruskan_kpd`
+--
+ALTER TABLE `tbl_diteruskan_kpd`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_instansi`
 --
 ALTER TABLE `tbl_instansi`
@@ -229,6 +256,12 @@ ALTER TABLE `tbl_disposisi`
   MODIFY `id_disposisi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `tbl_diteruskan_kpd`
+--
+ALTER TABLE `tbl_diteruskan_kpd`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbl_surat_keluar`
 --
 ALTER TABLE `tbl_surat_keluar`
@@ -238,7 +271,7 @@ ALTER TABLE `tbl_surat_keluar`
 -- AUTO_INCREMENT for table `tbl_surat_masuk`
 --
 ALTER TABLE `tbl_surat_masuk`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
